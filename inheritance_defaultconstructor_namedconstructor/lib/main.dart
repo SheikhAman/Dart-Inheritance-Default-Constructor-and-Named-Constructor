@@ -1,17 +1,18 @@
 // Objectives
-// 1. Inheritance with Default Constructor
+// 1. Inheritance with Default Constructor and Parameterised Constructor
 // 2. Inheritance with Named Constructor
 
 void main() {
-  var dog1 =
-      Dog(); //child constructor ke call dile parent class constructor ke o call kore dei
+  var dog1 = Dog('Labrador',
+      'Black'); //child constructor ke call dile parent class constructor ke o call kore dei
   print('');
-  var dog2 = Dog();
+  var dog2 = Dog('Pug', 'Brown');
 }
 
 class Animal {
   late String color; // property  or instance variable
-  Animal() {
+  Animal(String color) {
+    this.color;
     // defult constructor
     print('Animal class constructor');
   }
@@ -26,7 +27,8 @@ class Dog extends Animal {
     print('Dog class constructor');
   }
   */
-  Dog() : super() {
+  Dog(String breed, String color) : super(color) {
+    this.breed; // instantiate instance variable
     // calling super class consturctor using super keyword. even if you don't use super() keyword it will call the super constructor
     print('Dog class constructor');
   }
