@@ -50,7 +50,10 @@ void main() {
   var dog2 = Dog('Pug', 'Brown');
   print(''); // making newline
 
-  var dog3 = Dog.myNamedConstructor();
+  var dog3 = Dog.myNamedConstructor('German Shepherd',
+      'Black-Brown'); // we are passing value in named constructor
+  print('');
+  var dog4 = Dog.myNamedConstructor2('golir dog', 'yellow');
 }
 
 class Animal {
@@ -59,6 +62,10 @@ class Animal {
     this.color = color;
     // defult constructor
     print('Animal class constructor');
+  }
+  Animal.myAnimalNamedConstructor(String color) {
+    this.color = color;
+    print('Animal class named constructor');
   }
 }
 
@@ -77,7 +84,17 @@ class Dog extends Animal {
     // calling super class consturctor using super keyword. even if you don't use super() keyword it will call the super constructor
     print('Dog class constructor');
   }
-  Dog.myNamedConstructor() : super('White') {
+  Dog.myNamedConstructor(String breed, String color) : super(color) {
+    //we can pass value or parameter in super class constructor // named constructor is contianing some perameter
+    this.breed =
+        breed; // in this way we can instantiate our breed// this.breed is our instance variable
     print('Dog class named constructor');
+  }
+  Dog.myNamedConstructor2(String breed, String color)
+      : super.myAnimalNamedConstructor(color) {
+    // value will be initialize by color parameter
+    // calling superclasss named constructor which will execute super class of named consturctor
+    this.breed = breed;
+    print('Dog class named constructor 2');
   }
 }
